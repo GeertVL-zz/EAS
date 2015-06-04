@@ -12,21 +12,21 @@ namespace Eas.Tests
     {
         [Fact(DisplayName = "System asks LightModule for specific light")]
         public void SystemAsksSpecificLight()
-        {   string specificLight = "Left light";
+        {   var specificLight = LightType.Left;
             var module = new LightModule(null);
             module.Lights.Add(new Light(1, specificLight));
             
-            Light light = module.GetSpecificLight(name: specificLight);
-            Assert.Equal(specificLight, light.Name);
+            Light light = module.GetSpecificLight(specificLight);
+            Assert.Equal(specificLight, light.LightType);
         }
 
         
         [Fact(DisplayName = "System asks Light Module for specific light and not found throws exception")]
         public void WhenLightNotFoundThrowException()
         {
-            string specificLight = "DoNotExist";
+            var specificLight = LightType.Front;
             var module = new LightModule(null);            
-            Assert.Throws<LightNotFoundException>(() => module.GetSpecificLight(name: specificLight));            
+            Assert.Throws<LightNotFoundException>(() => module.GetSpecificLight(specificLight));            
         }
 
 
@@ -34,9 +34,9 @@ namespace Eas.Tests
         [Fact(DisplayName = "System asks Light Module for specific light and not found adds log entry")]
         public void WhenLightNotFoundAddLogEntry()
         {
-            string specificLight = "DoNotExist";
+            var specificLight = LightType.Front;
             var module = new LightModule(null);            
-            Assert.Throws<LightNotFoundException>(() => module.GetSpecificLight(name: specificLight)); 
+            Assert.Throws<LightNotFoundException>(() => module.GetSpecificLight(specificLight)); 
             Assert.Equal(1, module.Logs.Count);
         }
 
@@ -47,10 +47,10 @@ namespace Eas.Tests
             var recoverySystem = A.Fake<IRecoverySystem>();
             A.CallTo(() => recoverySystem.PingLight(1)).Returns(false);
             var module = new LightModule(recoverySystem);
-            var leftlight = "LeftLight";
+            var leftlight = LightType.Left;
             module.Lights.Add(new Light(1, leftlight));
 
-            Assert.Throws<LightNotAvailableException>(() => module.GetSpecificLight(name: leftlight));
+            Assert.Throws<LightNotAvailableException>(() => module.GetSpecificLight(leftlight));
         }
 
 
@@ -61,10 +61,10 @@ namespace Eas.Tests
             var recoverySystem = A.Fake<IRecoverySystem>();
             A.CallTo(() => recoverySystem.PingLight(1)).Returns(false);
             var module = new LightModule(recoverySystem);
-            var leftlight = "LeftLight";
+            var leftlight = LightType.Left;
             module.Lights.Add(new Light(1, leftlight));
 
-            Assert.Throws<LightNotAvailableException>(() => module.GetSpecificLight(name: leftlight));
+            Assert.Throws<LightNotAvailableException>(() => module.GetSpecificLight(leftlight));
             Assert.Equal(true, module.Alarm);
         }
 
@@ -74,10 +74,10 @@ namespace Eas.Tests
             var recoverySystem = A.Fake<IRecoverySystem>();
             A.CallTo(() => recoverySystem.PingLight(1)).Returns(false);
             var module = new LightModule(recoverySystem);
-            var leftlight = "LeftLight";
+            var leftlight = LightType.Left;
             module.Lights.Add(new Light(1, leftlight));
 
-            Assert.Throws<LightNotAvailableException>(() => module.GetSpecificLight(name: leftlight));
+            Assert.Throws<LightNotAvailableException>(() => module.GetSpecificLight(leftlight));
             Assert.Equal(1, module.Logs.Count);
         }
           
@@ -87,7 +87,7 @@ namespace Eas.Tests
             var recoverySystem = A.Fake<IRecoverySystem>();
             A.CallTo(() => recoverySystem.PingLight(1)).Returns(true);
             var module = new LightModule(recoverySystem);
-            var leftlight = "LeftLight";
+            var leftlight = LightType.Left;
             module.Lights.Add(new Light(1, leftlight));
             var light = module.GetSpecificLight(leftlight);
             light.Turn(on: true);
@@ -102,7 +102,7 @@ namespace Eas.Tests
             var recoverySystem = A.Fake<IRecoverySystem>();
             A.CallTo(() => recoverySystem.PingLight(1)).Returns(true);
             var module = new LightModule(recoverySystem);
-            var leftlight = "LeftLight";
+            var leftlight = LightType.Left;
             module.Lights.Add(new Light(1, leftlight));
             var light = module.GetSpecificLight(leftlight);
             light.Turn(on: true);

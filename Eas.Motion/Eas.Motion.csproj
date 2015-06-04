@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LightType.cs" />
     <Compile Include="Model\IRecoverySystem.cs" />
     <Compile Include="Model\Light.cs" />
     <Compile Include="LightModule.cs" />

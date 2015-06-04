@@ -4,23 +4,23 @@ namespace Eas.Motion
     {
         private bool _status;
         private readonly int _number;
-        private readonly string _name;
+        private readonly LightType _type;
 
         public Light() { }
 
-        public Light(int number, string name)
+        public Light(int number, LightType type)
         {
             _number = number;
-            _name = name;
+            _type = type;
         }
 
         public bool Status 
         {
             get { return _status; }
         }
-        public string Name 
+        public LightType LightType 
         {
-            get { return _name; }
+            get { return _type; }
         }
 
         public int Number 
