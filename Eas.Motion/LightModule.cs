@@ -32,7 +32,7 @@ namespace Eas.Motion
                 throw new LightNotAvailableException();
             }
             return specificLight;
-        }
+        }        
 
         public IList<string> Logs 
         {
