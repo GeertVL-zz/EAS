@@ -1,1 +1,1 @@
-== This is the repository for EAS practices
+=This is the repository for EAS practices
