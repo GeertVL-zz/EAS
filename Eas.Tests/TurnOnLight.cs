@@ -12,7 +12,8 @@ namespace Eas.Tests
     {
         [Fact(DisplayName = "System asks LightModule for specific light")]
         public void SystemAsksSpecificLight()
-        {   var specificLight = LightType.Left;
+        {   
+            var specificLight = LightType.Left;
             var module = new LightModule(null);
             module.Lights.Add(new Light(1, specificLight));
             
