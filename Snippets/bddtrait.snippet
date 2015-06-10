@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>BDD Fact</Title>
+      <Shortcut>bddtrait</Shortcut>
+      <Description>BDD Specification</Description>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Write the trait description</ToolTip>
+          <Default>Description</Default>
+        </Literal>
+        <Literal>
+          <ID>ClassName</ID>
+          <ToolTip>Trait Classname</ToolTip>
+          <Default>Classname</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp"><![CDATA[[Trait("$description$", "")]
+    public class $ClassName$ {
+      
+    }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
