@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +47,12 @@ namespace Eas.Tests
             _module.TurnOn(LightType.Front);
             Assert.Equal(0, _module.IsTurnedOn().Count());
         }
+
+		public int TurnOff(){
+
+			return 0;
+		}
         
     }
 }
+
